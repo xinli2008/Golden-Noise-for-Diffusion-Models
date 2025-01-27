@@ -14,7 +14,7 @@ class NoiseTransformer(nn.Module):
         self.upconv = nn.Conv2d(7,4,(1,1),(1,1),(0,0))
         self.downconv = nn.Conv2d(4,3,(1,1),(1,1),(0,0))
         # self.upconv = nn.Conv2d(7,4,(1,1),(1,1),(0,0))
-        self.swin = create_model("swin_tiny_patch4_window7_224",pretrained=True)
+        self.swin = create_model("swin_tiny_patch4_window7_224", pretrained=True)
 
 
     def forward(self, x, residual=False):
