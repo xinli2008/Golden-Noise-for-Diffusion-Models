@@ -1,3 +1,14 @@
+# Update:
+NPNet的训练流程主要分为三个部分: StageI(Noise Prompt Dataset Collection)、StageII(Using Collected Dataset for Training)、StageIII(Insert NPNet for Sampling)
+
+1. StageI: 第一阶段的目标是获取大规模的Noise Prompt Dataset(NPD)。首先对原始的随机高斯噪声x_T进行去噪, 得到x_{T-1}, 然后使用DDIM-Inversion得到更加具有语义信息的x_T'。X_T和X_T'执行去噪过程, 得到x_0和x_0', 通过人类偏好模型进行过滤, 得到符合条件的数据对(原始噪声-prompt-优化后的噪声)。
+
+2. StageII: 收集完NPD后, 将原始的噪声, 优化后的噪声以及文本提示放入NPNet中, 其中噪声由奇异值预测器和残差预测器处理, 文本提示由T2I扩散模型的文本编码器编码, 来进行噪声的预测。
+
+3. StageIII: 经过训练, NPNet可以在模型的推理过程中, 在给定随机初始噪声以及prompt的前提下, 将随机初始噪声转化为黄金噪声, 提升了模型的推理效果。
+
+![model_architecture](./Golden_noise.png)
+
 # Golden Noise for Diffusion Models: A Learning Framework
 
 <div align="center">
