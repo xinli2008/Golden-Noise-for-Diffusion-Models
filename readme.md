@@ -9,6 +9,8 @@ NPNet的训练流程主要分为三个部分: StageI(Noise Prompt Dataset Collec
 
 ![model_architecture](./Golden_noise.png)
 
+---------------------------------------------------------
+
 # Golden Noise for Diffusion Models: A Learning Framework
 
 <div align="center">
